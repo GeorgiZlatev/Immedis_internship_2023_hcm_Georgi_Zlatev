@@ -1,5 +1,7 @@
-"use strict";
-const { Model } = require("sequelize");
+'use strict';
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Compensation extends Model {
     /**
@@ -9,20 +11,21 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      // Compensation.belongsTo(models.User); //reverse case => Compensation belongs to User model
+      Compensation.belongsTo(models.Employee, { foreignKey: 'EmployeeId' }); //reverse case => Experiences belongs to Leaves model
+      Compensation.belongsTo(models.Education, { foreignKey: 'EmployeeId' });
     }
   }
-  Compensation.init(
-    {
-      compensation_id: DataTypes.INTEGER,
-      employee_id: DataTypes.INTEGER,
-      salary: DataTypes.DECIMAL,
-      bonuses: DataTypes.DECIMAL,
-    },
-    {
-      sequelize,
-      modelName: "Compensation",
-      timestamps: false,
-    }
-  );
+  Compensation.init({
+    emp_id: DataTypes.INTEGER,
+    salary: DataTypes.INTEGER,
+    currency: DataTypes.STRING,
+    bonuses: DataTypes.INTEGER,
+    createdAt: DataTypes.DATE
+  }, {
+    sequelize,
+    modelName: 'Compensation',
+    timestamps: false
+  });
   return Compensation;
 };
