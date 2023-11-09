@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Data</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .header {
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #logout-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        #logout-button, #home-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        #home-button {
+            background-color: #007bff;
+            margin-right: 69px;
+        }
+    </style>
+    <script src="../js/edit/edit-education.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <h1>Training Data - Edit</h1>
+        <button id="home-button" class="btn btn-primary">Начало</button>
+        <button id="logout-button">Изход</button>
+
+        <div class="button-container">
+            <button id="employee-button" class="btn btn-primary">Employee</button>
+            <button id="experience-button" class = "btn btn-primary">Experience</button>
+            <button id="leave-button" class ="btn btn-primary">Leave</button>
+            <button id="compensation-button" class ="btn btn-primary">Compensation</button>
+            <button id="education-button" class ="btn btn-primary">Education</button>
+            <button id="performance-button" class ="btn btn-primary">Performance</button>
+            <button id="training-button" class= "btn btn-primary">Training</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h1 id="header-title" class="text-center mt-5">Performance Info. - Edit</h1>
+        </div>
+    </div>
+
+    <form id="edit-form">
+        <div class="row mt-5">
+            <div class="col-6 offset-3">
+                <div class="form-group">
+                    <label for="training-name-input">Training Name:</label>
+                    <input type="text" id="training-name-input" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="training-date-input">Training Date (YYYY-MM-DD):</label>
+                    <input type="date" id="training-date-input" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="trainer-input">Trainer:</label>
+                    <input type="text" id="trainer-input" class="form-control" required>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Запази промените</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<script src="../js/edit/edit-training.js"></script>
+<script>
+
+    document.getElementById('employee-button').addEventListener('click', function() {
+        redirectToPage('Employee');
+    });
+
+    document.getElementById('experience-button').addEventListener('click', function() {
+        redirectToPage('Experience');
+    });
+
+    document.getElementById('leave-button').addEventListener('click', function() {
+        redirectToPage('Leave');
+    });
+
+    document.getElementById('compensation-button').addEventListener('click', function() {
+        redirectToPage('Compensation');
+    });
+
+    document.getElementById('education-button').addEventListener('click', function() {
+        redirectToPage('Education');
+    });
+
+    document.getElementById('performance-button').addEventListener('click', function() {
+        redirectToPage('Performance');
+    });
+
+    document.getElementById('training-button').addEventListener('click', function() {
+        redirectToPage('Training');
+    });
+
+    function redirectToPage(model) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+        location.href = `edit-${model.toLowerCase()}.html?id=${id}`;
+    }
+
+</script>
+</body>
+</html>
