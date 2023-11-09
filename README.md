@@ -1,4 +1,4 @@
-# Human Capital Management System
+# Human Capital Management System with Node.js and SQL
 
 - Human Capital Management System is a web system for managing employee data in a company. His training, position, salary, bonuses, education and leave can be tracked
 
