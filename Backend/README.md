@@ -2,6 +2,12 @@
 
 It supports multiple user roles - admin, mod, user
 
+- A user with the admin role can view, create, edit, and delete.
+
+- A user with the mod role can view, create, and edit.
+
+- A user with the user role can view.
+
 # Getting Started
 
 Rest requires MySQL and NODE.JS installed.
@@ -12,6 +18,8 @@ Rest requires MySQL and NODE.JS installed.
 To use this API, you need to authenticate and include a valid token in your requests.
 
 # Authentication and API
+
+- When logging into the system, two token keys are generated. The first one for login and the second one for updating the second one. The first has a life of 1 hour, and the second has a life of 10 hours. As the second one, it can be updated 10 times and then the user will have to log in again.
 
 - POST `/signup` - Register and receive an access token.
 - POST `/signup` - Log in and receive an access token.
