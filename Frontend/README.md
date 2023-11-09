@@ -1,4 +1,4 @@
-# Human Capital Management Web API
+# Human Capital Management Web
 
 ## Getting Started
 
