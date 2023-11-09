@@ -23,14 +23,7 @@ window.onload = async () => {
                     const data = await response.json();
 
 
-                    const emailElement = document.getElementById("login-email");
-                    const email = data.data.email;
 
-                    if (email) {
-                        emailElement.textContent = "Влезли сте с email: " + email;
-                    } else {
-                        emailElement.textContent = "Не сте влезли в системата.";
-                    }
 
 
                     const tableBody = document.getElementById("table-body");
