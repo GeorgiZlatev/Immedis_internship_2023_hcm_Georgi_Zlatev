@@ -9,6 +9,8 @@ async function saveEmployeeData(id, token, data) {
             }
         });
 
+
+
         if (response.ok) {
 
             const putResponse = await fetch(`http://localhost:8001/edit/${id}`, {
@@ -24,23 +26,25 @@ async function saveEmployeeData(id, token, data) {
 
                 return "Данните бяха успешно актуализирани.";
             } else {
-                return "Грешка при актуализация на данни: " + putResponse.statusText;
-            }
-        } else {
-            const postResponse = await fetch(`http://localhost:8001/create/${id}`, {
-                method: "POST",
-                headers: {
-                    "Authorization": token,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            });
+                // return "Грешка при актуализация на данни: " + putResponse.statusText;
+                const postResponse = await fetch(`http://localhost:8001/create/${id}`, {
+                    method: "POST",
+                    headers: {
+                        "Authorization": token,
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                });
 
-            if (postResponse.ok) {
-                return "Данните бяха успешно създадени.";
-            } else {
-                return "Грешка при създаване на данни: " + postResponse.statusText;
+                if (postResponse.ok) {
+                    return "Данните бяха успешно създадени.";
+                } else {
+                    return "Грешка при създаване на данни: " + postResponse.statusText;
+                }
             }
+
+        } else {
+
         }
     } catch (error) {
         return "Възникна грешка при изпращане на заявка: " + error;

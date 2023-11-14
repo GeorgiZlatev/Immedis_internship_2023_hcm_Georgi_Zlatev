@@ -54,6 +54,19 @@
     </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Human Capital Management Web</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <!--                <a class="nav-link" href="index.html">Sign In<span class="sr-only">(current)</span></a>-->
+            </li>
+        </ul>
+    </div>
+</nav>
 <div class="container">
 
     <div class="header">
@@ -83,7 +96,8 @@
         <div class="col-6 offset-3">
             <div class="form-group">
                 <label for="type-input">Type:</label>
-                <select id="type-input" class="form-control">
+                <select id="type-input" class="form-control" required>
+                    <option value="">Select type</option>
                     <option value="ambulance">ambulance</option>
                     <option value="unpaid">unpaid</option>
                     <option value="paid_leave">paid_leave</option>
@@ -92,7 +106,8 @@
             </div>
             <div class="form-group">
                 <label for="status-lea-input">Status:</label>
-                <select id="status-lea-input" class="form-control">
+                <select id="status-lea-input" class="form-control" required>
+                    <option value="">Select status</option>
                     <option value="pending">pending</option>
                     <option value="approved">approved</option>
                     <option value="rejected">rejected</option>

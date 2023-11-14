@@ -19,6 +19,7 @@ window.onload = async () => {
                 if (response.ok) {
                     const data = await response.json();
                     const employeeData = data.data;
+                    const employeeMessage = data.message;
 
                     document.getElementById("email-input").value = employeeData.email;
                     document.getElementById("status-input").value = employeeData.status;
@@ -35,6 +36,14 @@ window.onload = async () => {
                             status: document.getElementById("status-input").value,
                             role: document.getElementById("role-input").value,
                         };
+
+                        // console.log(employeeMessage)
+                        if (employeeMessage === 'admin role found'){
+
+                        }else if ((employeeData.role === "mod" || employeeData.role === "user") && updatedData.role === "admin"){
+                                alert("Нямате право да избирате роля 'admin'.");
+                            return;
+                        }
 
 
                         const updateResponse = await fetch(`http://localhost:8001/edit/${id}`, {
@@ -66,7 +75,7 @@ document.getElementById("logout-button").addEventListener("click", () => {
     localStorage.removeItem("token");
     localStorage.removeItem("refreshtoken");
 
-    window.location.href = "login.html";
+    window.location.href = "../login.html";
 });
 
 document.getElementById("home-button").addEventListener("click", () => {

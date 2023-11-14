@@ -65,24 +65,25 @@ window.onload = async () => {
                             if (updateResponse.ok) {
                                 alert("Данните бяха успешно актуализирани.");
                             } else {
-                                alert("Възникна грешка при актуализацията на данните.");
+                                // alert("Възникна грешка при актуализацията на данните.");
+                                const postResponse = await fetch(`http://localhost:8001/create/${id}`, {
+                                    method: "POST",
+                                    headers: {
+                                        "Authorization": token,
+                                        "Content-Type": "application/json",
+                                    },
+                                    body: JSON.stringify(updatedData),
+                                });
+
+                                if (postResponse.ok) {
+                                    alert("Данните бяха успешно създадени.");
+                                } else {
+                                    alert("Възникна грешка при създаване на данните.");
+                                }
                             }
                         } else {
 
-                            const postResponse = await fetch(`http://localhost:8001/create/${id}`, {
-                                method: "POST",
-                                headers: {
-                                    "Authorization": token,
-                                    "Content-Type": "application/json",
-                                },
-                                body: JSON.stringify(updatedData),
-                            });
 
-                            if (postResponse.ok) {
-                                alert("Данните бяха успешно създадени.");
-                            } else {
-                                alert("Възникна грешка при създаване на данните.");
-                            }
                         }
                     });
                 } else {
